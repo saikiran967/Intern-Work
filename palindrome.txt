@@ -1,0 +1,24 @@
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	s:="aba"
+	count:=0
+	n:=len(s)
+	i:=0
+	j:=n-1
+	for i=0;i<n/2;i++{
+	if s[i]==s[j]{
+	count++
+	}
+	j=j-1
+	}
+	if count==n/2 {
+	fmt.Println("Palindrome")	
+	} else {
+	fmt.Println("Not Palindrome")	
+	}
+}
