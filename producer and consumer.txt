@@ -1,0 +1,36 @@
+//producer single consumer problem in os
+//producer add job to the buffer 
+//consumer pick job from buffer and process it
+
+package main
+
+import (
+	"fmt"
+	"time"
+)
+//buffer 
+var msg = [5]string{"a","b","c","d","e"}
+
+//producer routine add msg to buffer
+func producer(buffer chan string){
+	var m string
+	for _,m= range msg{
+		buffer <- m
+	}
+	
+}
+
+//consumer routine pick msg from buffer queue and process it
+func consumer(buffer chan string){
+	for i:= range buffer {
+		fmt.Println(i)
+	}
+}
+//main routine 
+func main() {
+	buffer:=make(chan string)
+	go producer(buffer)
+	go consumer(buffer)
+	time.Sleep(time.Second)// to make main routine wait for the completion of producer and consumer
+	
+}
